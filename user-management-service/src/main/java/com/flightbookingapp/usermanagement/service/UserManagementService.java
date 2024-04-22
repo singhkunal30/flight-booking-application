@@ -1,6 +1,6 @@
 package com.flightbookingapp.usermanagement.service;
 
-import com.flightbookingapp.usermanagement.dto.UserDTO;
+import com.flightbookingapp.commonservice.dto.UserDTO;
 
 public interface UserManagementService {
 	

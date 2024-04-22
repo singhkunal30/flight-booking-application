@@ -3,10 +3,10 @@ package com.flightbookingapp.usermanagement.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.flightbookingapp.usermanagement.constants.ValidationMessages;
-import com.flightbookingapp.usermanagement.enums.Role;
-import com.flightbookingapp.usermanagement.validators.annotations.ValidEmail;
-import com.flightbookingapp.usermanagement.validators.annotations.ValidPassword;
+import com.flightbookingapp.commonservice.constants.ValidationMessages;
+import com.flightbookingapp.commonservice.enums.Role;
+import com.flightbookingapp.commonservice.validators.annotations.ValidEmail;
+import com.flightbookingapp.commonservice.validators.annotations.ValidPassword;
 
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;

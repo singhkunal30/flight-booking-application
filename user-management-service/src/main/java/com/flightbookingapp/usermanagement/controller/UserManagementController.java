@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.flightbookingapp.usermanagement.dto.UserDTO;
+import com.flightbookingapp.commonservice.dto.UserDTO;
+import com.flightbookingapp.commonservice.utils.JsonUtils;
 import com.flightbookingapp.usermanagement.service.UserManagementService;
-import com.flightbookingapp.usermanagement.utils.JsonUtils;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.servlet.http.HttpServletRequest;

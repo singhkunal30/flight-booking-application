@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
-import com.flightbookingapp.usermanagement.dto.UserDTO;
+import com.flightbookingapp.commonservice.dto.UserDTO;
 import com.flightbookingapp.usermanagement.model.User;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)

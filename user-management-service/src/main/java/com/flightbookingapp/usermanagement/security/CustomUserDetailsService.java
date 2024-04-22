@@ -6,11 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import com.flightbookingapp.usermanagement.exception.UserExecption;
+import com.flightbookingapp.commonservice.exception.UserExecption;
+import com.flightbookingapp.commonservice.utils.ErrorCode;
+import com.flightbookingapp.commonservice.utils.ErrorMessage;
 import com.flightbookingapp.usermanagement.model.User;
 import com.flightbookingapp.usermanagement.repository.UserManagementRepository;
-import com.flightbookingapp.usermanagement.utils.ErrorCode;
-import com.flightbookingapp.usermanagement.utils.ErrorMessage;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{

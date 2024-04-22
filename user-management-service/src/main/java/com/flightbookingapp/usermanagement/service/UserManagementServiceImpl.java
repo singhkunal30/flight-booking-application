@@ -5,19 +5,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.flightbookingapp.usermanagement.dto.UserDTO;
-import com.flightbookingapp.usermanagement.exception.UserExecption;
+import com.flightbookingapp.commonservice.dto.UserDTO;
+import com.flightbookingapp.commonservice.exception.UserExecption;
+import com.flightbookingapp.commonservice.utils.ErrorCode;
+import com.flightbookingapp.commonservice.utils.ErrorMessage;
 import com.flightbookingapp.usermanagement.mapper.DTOMapper;
 import com.flightbookingapp.usermanagement.model.User;
 import com.flightbookingapp.usermanagement.repository.UserManagementRepository;
-import com.flightbookingapp.usermanagement.utils.ErrorCode;
-import com.flightbookingapp.usermanagement.utils.ErrorMessage;
 
 @Service
 public class UserManagementServiceImpl implements UserManagementService{
 	
 	@Autowired
-	UserManagementRepository userManagementRepository;
+	UserManagementRepository userManagementRepository;	
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	DTOMapper mapper;
@@ -27,9 +30,6 @@ public class UserManagementServiceImpl implements UserManagementService{
 	
 	@Autowired
 	ErrorCode errCode;
-	
-	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public UserDTO register(UserDTO userDTO) {
