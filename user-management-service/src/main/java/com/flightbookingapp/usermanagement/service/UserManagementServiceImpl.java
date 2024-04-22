@@ -2,7 +2,7 @@ package com.flightbookingapp.usermanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.flightbookingapp.commonservice.dto.UserDTO;
@@ -20,7 +20,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	UserManagementRepository userManagementRepository;	
 	
 	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	DTOMapper mapper;
