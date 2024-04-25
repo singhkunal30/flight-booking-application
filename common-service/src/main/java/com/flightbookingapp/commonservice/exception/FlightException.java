@@ -8,14 +8,14 @@ import lombok.Getter;
 
 @SuppressWarnings("serial")
 @Getter
-public class FlightExecption extends RuntimeException{
+public class FlightException extends RuntimeException{
 	
 	private final LocalDateTime timestamp;
 	private final String errMsg;
 	private final Long errCode;
 	private final HttpStatus httpStatus;
 	
-	public FlightExecption(String errMsg, Long errCode, HttpStatus httpStatus) {
+	public FlightException(String errMsg, Long errCode, HttpStatus httpStatus) {
 		this.timestamp = LocalDateTime.now();
 		this.errMsg = errMsg;
 		this.errCode = errCode;

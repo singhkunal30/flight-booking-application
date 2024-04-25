@@ -3,6 +3,8 @@ package com.flightbookingapp.usermanagement.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+
 import com.flightbookingapp.commonservice.constants.ValidationMessages;
 import com.flightbookingapp.commonservice.enums.Role;
 import com.flightbookingapp.commonservice.validators.annotations.ValidEmail;
@@ -17,7 +19,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,6 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity
 public class BaiscAuthSecurityConfig {
 
     @Autowired
@@ -24,8 +26,9 @@ public class BaiscAuthSecurityConfig {
         http
             .authorizeHttpRequests((auth)->
             	auth
-            		.requestMatchers("/api/v1/user/auth").permitAll()
-            		.anyRequest().authenticated())
+            		.requestMatchers("/user/register").permitAll()
+            		.anyRequest().authenticated()
+            )
             .formLogin(Customizer.withDefaults())
             .httpBasic(Customizer.withDefaults())
             .csrf((csrf) -> csrf.disable());

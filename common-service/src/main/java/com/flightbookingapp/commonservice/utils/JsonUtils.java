@@ -7,7 +7,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.flightbookingapp.commonservice.exception.UserExecption;
+import com.flightbookingapp.commonservice.exception.UserException;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.experimental.UtilityClass;
@@ -62,7 +62,7 @@ public class JsonUtils {
 			response = mapper.readValue(request.getInputStream(), typeReference);
 		} catch (Exception e) {
 			log.error("Exception at json request parsing ", e);
-			throw new UserExecption(errMsg.getInvalidRequest(), errCode.getInvalidRequest(), HttpStatus.BAD_REQUEST);
+			throw new UserException(errMsg.getInvalidRequest(), errCode.getInvalidRequest(), HttpStatus.BAD_REQUEST);
 		}
 		return response;
 	}

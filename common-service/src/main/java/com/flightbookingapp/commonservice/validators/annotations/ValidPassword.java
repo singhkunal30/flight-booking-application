@@ -4,15 +4,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-
 import com.flightbookingapp.commonservice.constants.ValidationMessages;
 import com.flightbookingapp.commonservice.validators.PasswordValidator;
 
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
 
 @Constraint(validatedBy = PasswordValidator.class)
-@Target({ ElementType.FIELD })
+@Target({ ElementType.FIELD, ElementType.PARAMETER })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidPassword {
     String message() default ValidationMessages.INVALID_PASSWORD;
