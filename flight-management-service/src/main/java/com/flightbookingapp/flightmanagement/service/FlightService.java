@@ -1,6 +1,6 @@
 package com.flightbookingapp.flightmanagement.service;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import com.flightbookingapp.commonservice.dto.FlightDTO;
@@ -13,6 +13,6 @@ public interface FlightService {
     
     public List<FlightDTO> getAllFlights();
     
-    public List<FlightDTO> getFlights(String source, String destination, Date flightDate);
+    public List<FlightDTO> getFlights(String source, String destination, LocalDate flightDate);
 
 }

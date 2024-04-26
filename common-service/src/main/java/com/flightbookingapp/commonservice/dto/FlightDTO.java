@@ -1,7 +1,7 @@
 package com.flightbookingapp.commonservice.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.flightbookingapp.commonservice.enums.Airline;
@@ -33,7 +33,7 @@ public class FlightDTO {
     
     @NotEmpty(message = "Date is empty")
 	@NotNull(message = "Please enter the journey date")
-    private Date flightDate;
+    private LocalDate flightDate;
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private BigDecimal price;

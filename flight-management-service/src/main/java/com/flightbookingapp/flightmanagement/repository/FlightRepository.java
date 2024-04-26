@@ -1,6 +1,6 @@
 package com.flightbookingapp.flightmanagement.repository;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +12,6 @@ import com.flightbookingapp.flightmanagement.model.Flight;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight, String> {
 	
-	Optional<List<Flight>> findBySourceAndDestinationAndFlightDate(String source, String destination, Date flightDate);
+	Optional<List<Flight>> findBySourceAndDestinationAndFlightDate(String source, String destination, LocalDate flightDate);
 	
 }
