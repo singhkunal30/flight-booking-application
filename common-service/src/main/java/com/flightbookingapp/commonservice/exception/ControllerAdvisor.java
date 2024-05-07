@@ -12,8 +12,8 @@ import org.springframework.web.context.request.WebRequest;
 @ControllerAdvice
 public class ControllerAdvisor {
 	
-	@ExceptionHandler(FlightExecption.class)
-	public ResponseEntity<Object> handleCommonException(FlightExecption ce, WebRequest request){
+	@ExceptionHandler(CommonException.class)
+	public ResponseEntity<Object> handleCommonException(CommonException ce, WebRequest request){
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", ce.getTimestamp());
 		body.put("message", ce.getErrMsg());

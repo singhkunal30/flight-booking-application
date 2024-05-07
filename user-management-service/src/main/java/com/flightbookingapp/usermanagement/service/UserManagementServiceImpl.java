@@ -6,7 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.flightbookingapp.commonservice.dto.UserDTO;
-import com.flightbookingapp.commonservice.exception.UserExecption;
+import com.flightbookingapp.commonservice.exception.CommonException;
 import com.flightbookingapp.commonservice.utils.ErrorCode;
 import com.flightbookingapp.commonservice.utils.ErrorMessage;
 import com.flightbookingapp.usermanagement.mapper.DTOMapper;
@@ -35,7 +35,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	public UserDTO register(UserDTO userDTO) {
 		try {
 			userManagementRepository.findByEmail(userDTO.getEmail()).ifPresent(existingUser -> {
-	            throw new UserExecption(errMsg.getUserAlreadyExist() + " " + userDTO.getEmail(),
+	            throw new CommonException(errMsg.getUserAlreadyExist() + " " + userDTO.getEmail(),
 	                    errCode.getUserAlreadyExist(), HttpStatus.UNPROCESSABLE_ENTITY);
 	        });
 			String encodedPassword = passwordEncoder.encode(userDTO.getPassword());
@@ -43,27 +43,28 @@ public class UserManagementServiceImpl implements UserManagementService{
 			User user = mapper.toUser(userDTO);
 			User savedUser = userManagementRepository.save(user);
 			return mapper.toUserDTO(savedUser);
-		}catch (UserExecption ue) {
+		}catch (CommonException ue) {
 			throw ue;
 		}
 		catch (Exception e) {
-			throw new UserExecption(e.getMessage(), errCode.getInvalidRequest() , HttpStatus.BAD_REQUEST);
+			throw new CommonException(e.getMessage(), errCode.getInvalidRequest() , HttpStatus.BAD_REQUEST);
 		}
 	}
 	
 	@Override
 	public UserDTO getUser(long id) {
 		User user = userManagementRepository.findById(id).orElseThrow(
-				()-> new UserExecption(errMsg.getUserNotFound(), errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
+				()-> new CommonException(errMsg.getUserNotFound(), errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
 		return mapper.toUserDTO(user);
 	}
 
 	@Override
 	public UserDTO updateUser(UserDTO userDTO) {
-		userManagementRepository.findById(userDTO.getUserId())
-				.orElseThrow(() -> new UserExecption(errMsg.getUserNotFound() + " " +userDTO.getUserId(), 
+		User user = userManagementRepository.findById(userDTO.getUserId())
+				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound() + " " +userDTO.getUserId(), 
 						errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
 		User updatedUser = mapper.toUser(userDTO);
+		updatedUser.setPassword(user.getPassword());
 		updatedUser.setUserId(userDTO.getUserId());
 		userManagementRepository.save(updatedUser);
 		return mapper.toUserDTO(updatedUser);
@@ -72,7 +73,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	@Override
 	public boolean removeUser(long id) {
 		User user = userManagementRepository.findById(id)
-				.orElseThrow(() -> new UserExecption(errMsg.getUserNotFound()+ " " +id, 
+				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound()+ " " +id, 
 						errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
 		userManagementRepository.delete(user);
 		return true;

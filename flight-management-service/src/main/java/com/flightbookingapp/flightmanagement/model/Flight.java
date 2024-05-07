@@ -1,10 +1,7 @@
 package com.flightbookingapp.flightmanagement.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDateTime;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.flightbookingapp.commonservice.enums.Airline;
 
@@ -35,8 +32,6 @@ public class Flight {
     private String flightNumber;
     private String source;
     private String destination;
-    @DateTimeFormat(pattern = "dd-mm-yyyy")
-	private Date flightDate;
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private BigDecimal price;

@@ -2,11 +2,11 @@ package com.flightbookingapp.commonservice.validators;
 
 import java.util.regex.Pattern;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import com.flightbookingapp.commonservice.constants.ValidationMessages;
 import com.flightbookingapp.commonservice.validators.annotations.ValidEmail;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class EmailValidator implements ConstraintValidator<ValidEmail, String> {
 

@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import com.flightbookingapp.commonservice.exception.UserExecption;
+import com.flightbookingapp.commonservice.exception.CommonException;
 import com.flightbookingapp.commonservice.utils.ErrorCode;
 import com.flightbookingapp.commonservice.utils.ErrorMessage;
 import com.flightbookingapp.usermanagement.model.User;
@@ -27,7 +27,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String input) {
 		User user = userRepository.findByEmail(input).orElseThrow(() -> 
-		new UserExecption(errMsg.getUserNotFound(), errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
+		new CommonException(errMsg.getUserNotFound(), errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
 		return new CustomUserDetails(user);
 	}
 	

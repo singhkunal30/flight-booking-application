@@ -2,11 +2,11 @@ package com.flightbookingapp.commonservice.validators;
 
 import java.util.regex.Pattern;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import com.flightbookingapp.commonservice.constants.ValidationMessages;
 import com.flightbookingapp.commonservice.validators.annotations.ValidPassword;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class PasswordValidator implements ConstraintValidator<ValidPassword, String> {
 

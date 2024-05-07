@@ -14,11 +14,13 @@ public class ErrorCode {
 	public final long userNotFound;
 	public final long invalidRequest;
 	public final long userAlreadyExist;
+	public final long bookingNotFound;
 	
 	public ErrorCode(Environment env) {
 		this.invalidRequest=Long.valueOf(env.getProperty("error.code.invalid.request"));
 		this.userNotFound=Long.valueOf(env.getProperty("error.code.user.not.found"));
 		this.userAlreadyExist=Long.valueOf(env.getProperty("error.code.user.already.exist"));
+		this.bookingNotFound=Long.valueOf(env.getProperty("error.code.booking.not.found"));
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.flightbookingapp.commonservice;
+package com.flightbookingapp.bookingservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CommonServiceApplicationTests {
+class BookingServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
