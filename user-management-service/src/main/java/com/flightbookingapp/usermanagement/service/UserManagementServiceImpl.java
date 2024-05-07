@@ -2,7 +2,7 @@ package com.flightbookingapp.usermanagement.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.flightbookingapp.commonservice.dto.UserDTO;
@@ -20,7 +20,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	UserManagementRepository userManagementRepository;	
 	
 	@Autowired
-	BCryptPasswordEncoder passwordEncoder;
+	PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	DTOMapper mapper;
@@ -61,8 +61,9 @@ public class UserManagementServiceImpl implements UserManagementService{
 	@Override
 	public UserDTO updateUser(UserDTO userDTO) {
 		User user = userManagementRepository.findById(userDTO.getUserId())
-				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound() + " " +userDTO.getUserId(), 
+				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound() + " " +userDTO.getUserId(),
 						errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
+		userDTO.setPassword(user.getPassword());
 		User updatedUser = mapper.toUser(userDTO);
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setUserId(userDTO.getUserId());
@@ -73,7 +74,7 @@ public class UserManagementServiceImpl implements UserManagementService{
 	@Override
 	public boolean removeUser(long id) {
 		User user = userManagementRepository.findById(id)
-				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound()+ " " +id, 
+				.orElseThrow(() -> new CommonException(errMsg.getUserNotFound()+ " " +id,
 						errCode.getUserNotFound(), HttpStatus.NOT_FOUND));
 		userManagementRepository.delete(user);
 		return true;

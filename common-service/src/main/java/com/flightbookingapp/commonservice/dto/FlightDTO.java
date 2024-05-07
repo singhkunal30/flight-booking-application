@@ -29,7 +29,6 @@ public class FlightDTO {
     @NotEmpty(message = "Destination is empty")
 	@NotNull(message = "Please enter the destination")
     private String destination;
-   
     private LocalDateTime departureDateTime;
     private LocalDateTime arrivalDateTime;
     private BigDecimal price;

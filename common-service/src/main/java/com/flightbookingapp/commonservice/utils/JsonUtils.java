@@ -63,7 +63,7 @@ public class JsonUtils {
 		} catch (Exception e) {
 			log.error("Exception at json request parsing ", e);
 			throw new CommonException(errMsg.getInvalidRequest(), errCode.getInvalidRequest(), HttpStatus.BAD_REQUEST);
-		}
+			}
 		return response;
 	}
 
