@@ -3,13 +3,15 @@ package com.flightbookingapp.flightmanagement.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.flightbookingapp.commonservice.dto.FlightDTO;
-import com.flightbookingapp.flightmanagement.exception.FlightExecption;
+import com.flightbookingapp.commonservice.exception.CommonException;
 import com.flightbookingapp.flightmanagement.mapper.DTOMapper;
 import com.flightbookingapp.flightmanagement.model.Flight;
 import com.flightbookingapp.flightmanagement.repository.FlightRepository;
 
+@Service
 public class FlightServiceImpl implements FlightService {
 	
 	@Autowired
@@ -28,7 +30,7 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public FlightDTO getFlightById(String flightId) {
 		Flight flight = flightRepository.findById(flightId)
-				.orElseThrow(() -> new FlightExecption(flightId, null, null));
+				.orElseThrow(() -> new CommonException(flightId, null, null));
 		return mapper.toFlightDTO(flight);
 	}
 
