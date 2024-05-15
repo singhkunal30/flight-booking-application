@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: booking-service
+          uri: lb://booking-service
+          predicates:
+            - Path=/booking/**
+        - id: flight-management-service
+          uri: lb://flight-management-service
+          predicates:
+            - Path=/flight/**
+        - id: user-management-service
+          uri: lb://user-management-service
+          predicates:
+            - Path=/user/**
+
+server:
+  port: 7100
